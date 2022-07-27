@@ -7,6 +7,7 @@ use App\Form\WordType;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
 use App\Repository\WordRepository;
+use PhpOffice\PhpWord\TemplateProcessor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,25 +34,21 @@ class WordController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $wordRepository->add($word, true);
+            $wordRepository->add($word, false); //true for save in DB
 
-            $phpWord = new PhpWord();
-            $section = $phpWord->addSection();
-            $section->addText(
-                '"Learn from yesterday, live for' . $word->getVille() .'  today, hope for tomorrow. '
-                . 'The important thing is not' . $word->getNom() .' to stop questioning." '
-                . '(Albert Einstein)'
-            );
-            $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
-            $fileName="hello_world_download_file.docx";
-            $temp_file = tempnam(sys_get_temp_dir(), $fileName);
-            $objWriter->save($temp_file);
-            $response = new BinaryFileResponse($temp_file);
-            $response->setContentDisposition(
-                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-                $fileName
-            );
-            return $response;
+            $templateProcessor = new TemplateProcessor(__DIR__ ."\DEC_IMMATRICULATION-DREI_ECKEN.docx");
+            
+            
+            // $templateProcessor = IOFactory::createWriter($phpWord, 'Word2007');
+            header("Content-Disposition: attachment; filename=DocTest_Zak.docx");
+            $templateProcessor->saveAs('php://output');
+            
+            // $response = new BinaryFileResponse($temp_file);
+            // $response->setContentDisposition(
+            //     ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            //     $fileName
+            ;
+            // return $response;
 
             // return $this->redirectToRoute('app_word_index', [], Response::HTTP_SEE_OTHER);
         }
