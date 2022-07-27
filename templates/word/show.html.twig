@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Word{% endblock %}
+
+{% block body %}
+    <h1>Word</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ word.id }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ word.ville }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ word.Nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_word_index') }}">back to list</a>
+
+    <a href="{{ path('app_word_edit', {'id': word.id}) }}">edit</a>
+
+    {{ include('word/_delete_form.html.twig') }}
+{% endblock %}
