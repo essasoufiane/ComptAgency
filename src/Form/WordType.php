@@ -17,7 +17,7 @@ class WordType extends AbstractType
             ->add('ville')
             ->add('cin')
             ->add('adresse_associe')
-            // ->add('date_de_naissance')
+            ->add('date_de_naissance')
             ->add('entreprise')
             ->add('adresse_societe')
             // ->add('activite');

@@ -29,8 +29,8 @@ class Word
     #[ORM\Column(length: 255)]
     private ?string $adresse_associe = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $date_de_naissance = null;
+    #[ORM\Column(length: 255)]
+    private ?string $date_de_naissance = null;
 
     #[ORM\Column(length: 255)]
     private ?string $entreprise = null;
@@ -106,12 +106,12 @@ class Word
         return $this;
     }
 
-    public function getDateDeNaissance(): ?\DateTimeInterface
+    public function getDateDeNaissance(): ?string
     {
         return $this->date_de_naissance;
     }
 
-    public function setDateDeNaissance(\DateTimeInterface $date_de_naissance): self
+    public function setDateDeNaissance(string $date_de_naissance): self
     {
         $this->date_de_naissance = $date_de_naissance;
 
