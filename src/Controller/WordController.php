@@ -36,23 +36,20 @@ class WordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $wordRepository->add($word, false); //true for save in DB
 
-            $templateProcessor = new TemplateProcessor(__DIR__ ."\DEC_IMMATRICULATION-DREI_ECKEN.docx");
+            $templateProcessor = new TemplateProcessor(__DIR__ ."\DREI_ECKEN_STATUTS.docx");
             
-            
-            // $templateProcessor = IOFactory::createWriter($phpWord, 'Word2007');
+            $templateProcessor->setValue('firstname', $word->getPrenom());
+            $templateProcessor->setValue('lastname', $word->getNom());
+            $templateProcessor->setValue('cin', $word->getCin());
+            $templateProcessor->setValue('adresse_associe', $word->getAdresseAssocie());
+            $templateProcessor->setValue('date_naissance', $word->getDateDeNaissance());
+            $templateProcessor->setValue('entreprise', $word->getEntreprise());
+            $templateProcessor->setValue('adresse_societe', $word->getAdresseSociete());
             header("Content-Disposition: attachment; filename=DocTest_Zak.docx");
             $templateProcessor->saveAs('php://output');
-            
-            // $response = new BinaryFileResponse($temp_file);
-            // $response->setContentDisposition(
-            //     ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            //     $fileName
-            ;
-            // return $response;
 
-            // return $this->redirectToRoute('app_word_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->renderForm('word/new.html.twig', [
             'word' => $word,
             'form' => $form,
