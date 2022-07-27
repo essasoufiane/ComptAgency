@@ -15,10 +15,10 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/word')]
+#[Route('/')]
 class WordController extends AbstractController
 {
-    #[Route('/', name: 'app_word_index', methods: ['GET'])]
+    #[Route('/liste', name: 'app_word_index', methods: ['GET'])]
     public function index(WordRepository $wordRepository): Response
     {
         return $this->render('word/index.html.twig', [
@@ -26,7 +26,7 @@ class WordController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_word_new', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_word_new', methods: ['GET', 'POST'])]
     public function new(Request $request, WordRepository $wordRepository): Response
     {
         $word = new Word();
