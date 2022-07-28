@@ -36,7 +36,7 @@ class WordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $wordRepository->add($word, false); //true for save in DB
 
-            $templateProcessor = new TemplateProcessor(__DIR__ ."\DREI_ECKEN_STATUTS.docx");
+            $templateProcessor = new TemplateProcessor(__DIR__ ."/DREI_ECKEN_STATUTS.docx");
             
             $templateProcessor->setValue('firstname', $word->getPrenom());
             $templateProcessor->setValue('lastname', $word->getNom());
