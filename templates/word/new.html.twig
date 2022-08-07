@@ -3,9 +3,13 @@
 {% block title %}New Word{% endblock %}
 
 {% block body %}
+    
+    <div class="container pt-5">
+
     <h1>Créé un nouveau dossier</h1>
 
     {{ include('word/_form.html.twig') }}
 
-    <a href="{{ path('app_word_index') }}">back to list</a>
+    </div>
+
 {% endblock %}
