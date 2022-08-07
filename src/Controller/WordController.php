@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/')]
+#[Route('/word')]
 class WordController extends AbstractController
 {
     #[Route('/liste', name: 'app_word_index', methods: ['GET'])]
