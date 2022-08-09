@@ -1,53 +1,66 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{path('app_home')}}">ComptAgency</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<header>
+	<div class="header-title mob">
+		<div class="burger-menu d-flex justify-content-between" id="burger-menu">
+			<a href="/"><img class="logo-wic-mobile" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
+			<div id="burger-menu1" class="mob mt-2">
+				<span></span>
+			</div>
+		</div>
+	</div>
 
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="{{path('app_home')}}">Accueil
-            <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_word_new')}}">Nouveau</a>
-        </li>
-        {% if is_granted('ROLE_USER') %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_word_new')}}">Mon compte</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_logout')}}">Deconnexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('admin')}}">admin</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
-        </li>
-        {% endif %}
-        {# <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form> #}
-    </div>
-  </div>
-</nav>
+	<nav class="navbar-wic position-relative" id="navbar">
+		<a href="/"><img class="logo-wic position-absolute" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
+		<ul>
+			{% if is_granted('ROLE_USER') %}
+				<li class="bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Mon compte</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+				</li>
+			{% else %}
+				<li class="bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+				</li>
+			{% endif %}
+			<div class="button-section"></div>
+		</ul>
+	</nav>
+	<hr class="hr-navbar"></header>
+
+{# menu burger #}
+<div id="menu1">
+	<ul>
+			{% if is_granted('ROLE_USER') %}
+				<li class="grey bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+				</li>
+				<li class="grey bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Mon compte</a>
+				</li>
+				<li class="grey bold">
+					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+				</li>
+			{% else %}
+				<li class="grey bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+				</li>
+				<li class="grey bold">
+					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
+				</li>
+				<li class="grey bold">
+					<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+				</li>
+			{% endif %}
+	</ul>
+</div>
+{# END menu burger #}

@@ -1,0 +1,258 @@
+header {
+    margin: 1rem;
+}
+
+.burger-menu {
+    height: 3rem;
+}
+
+.navbar-wic {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+.navbar-wic li {
+    list-style: none;
+}
+
+.navbar-wic li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navbar-wic {
+
+    ul {
+        padding: 0rem;
+
+        li {
+            margin: 1rem;
+        }
+    }
+}
+
+.navbar-wic ul li a {
+    color: #748BAB;
+    text-decoration: none;
+}
+
+.burger-menu .logo-burger {
+    height: 3rem;
+    width: 3rem;
+    float: right;
+}
+
+.burger-menu .logo-wic {
+    float: left;
+}
+
+.logo-wic-mobile {
+    display: block;
+    width: 90px;
+}
+
+.logo-wic {
+    width: 134px;
+    top: -3px;
+}
+
+.title-burger-menu {
+    display: none;
+}
+
+.hr-navbar {
+    display: none;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    header {
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .navbar-wic .logo-wic {
+        display: block;
+        float: left;
+    }
+
+    .navbar-wic {
+        display: block;
+        height: 4rem;
+    }
+
+    .navbar-wic ul {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .navbar-wic ul li {
+        margin-right: 3rem;
+    }
+
+    .hr-navbar {
+        display: block;
+    }
+
+    .language {
+        margin-left: 1rem;
+    }
+
+
+    .slide-line-grey {
+        position: relative;
+    }
+
+    .slide-line-grey::before {
+        content: '';
+        position: absolute;
+        background: rgba(68, 21, 21, 0.63);
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        transform-origin: 100% 0;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .slide-line-grey:hover::before {
+        transform-origin: 0 0;
+        transform: scaleX(1);
+    }
+}
+
+
+// Menu Burger
+
+@media screen and (min-width: 1024px) {
+    .mob {
+        display: none;
+    }
+}
+
+#burger-menu1 {
+    cursor: pointer;
+    height: 27px;
+    width: 27px;
+    // margin: 50px;
+    overflow: visible;
+    position: relative;
+    z-index: 90;
+
+    // THE LINES
+    span,
+    span:before,
+    span:after {
+        background: #1e3c72;
+        display: block;
+        height: 2px;
+        opacity: 1;
+        position: absolute;
+        transition: 0.3s ease-in-out;
+    }
+
+    span:before,
+    span:after {
+        content: '';
+    }
+
+    // TOP
+    span:before {
+        left: 0px;
+        top: -10px;
+        width: 27px;
+    }
+
+    // MIDDLE
+    span {
+        right: 0px;
+        top: 13px;
+        width: 27px;
+    }
+
+    // BOTTOM
+    span:after {
+        left: 0px;
+        top: 10px;
+        width: 27px;
+    }
+
+    // ROTATION ON CLICK
+    &.close {
+
+        // TOP
+        span:before {
+            top: 0px;
+            transform: rotate(90deg);
+            width: 27px;
+            background: #ffffff;
+        }
+
+        // MIDDLE
+        span {
+            transform: rotate(-45deg);
+            top: 13px;
+            width: 27px;
+            background: #ffffff;
+        }
+
+        // BOTTOM
+        span:after {
+            top: 0px;
+            left: 0;
+            transform: rotate(90deg);
+            opacity: 0;
+            width: 0;
+            background: #ffffff;
+
+        }
+    }
+}
+
+#menu1 {
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    text-align: center;
+    padding-top: 20px;
+
+    &.overlay {
+        visibility: visible;
+        opacity: 1;
+        padding-top: 100px;
+        background: rgba(0, 0, 0, 0.8);
+        transition: all 0.3s ease-in-out;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        color: #fff;
+        display: block;
+        font-size: 32px;
+        margin-bottom: 30px;
+        text-decoration: none;
+    }
+}
+
+// END Menu Burger
