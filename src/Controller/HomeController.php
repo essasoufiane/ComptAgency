@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Smalot\PdfParser\Parser;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,23 +55,5 @@ class HomeController extends AbstractController
   );
 
   return $response;
-    }
-
-    #[Route('/pdf', name: 'pdf', methods: ['GET', 'POST'])]
-    public function pdfParser(): Response
-    {
-         $pdfFilePath =  __DIR__ . "/wf3.PDF";
-        
-        $pdfParser = new Parser();
-        $pdf = $pdfParser->parseFile($pdfFilePath);
-        $text = $pdf->getText();
-        // $text = utf8_decode($pdf->getText());
-        
-
-        return $this->render('/pdf/pdf.html.twig', [
-            'text' => $text ,
-            
-        ]);
-
     }
 }
