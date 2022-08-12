@@ -1,8 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ComptAgency - Acceuil{% endblock %}
+{% block title %}ComptAgency - Acceuil
+{% endblock %}
 
 {% block body %}
-<h1 class="text-center mt-5">Acceuil</h1>
+
+	<section class="slider">
+		<img class="img__slider active" src="{{asset('assets/images/calculateur.jpg')}}" alt="calculateur">
+		<img class="img__slider" src="{{asset('assets/images/digitalMarketing.jpg')}}" alt="digitalMarketing">
+		<img class="img__slider" src="{{asset('assets/images/ecommerce.jpg')}}" alt="ecommerce">
+		<img class="img__slider" src="{{asset('assets/images/graphique.jpg')}}" alt="graphique">
+		<div class="right">
+			{# <i class="fas fa-angle-double-right"></i> #}
+		</div>
+		<div class="left">
+			{# <i class="fas fa-angle-double-left"></i> #}
+		</div>
+        <article class="cta d-flex flex-column justify-content-center align-items-center">
+        <h1>ComptAgency</h1>
+        <p>Faites confiance aux expèrt</p>
+        </article>
+
+	</section>
 
 {% endblock %}
