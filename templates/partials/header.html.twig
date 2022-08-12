@@ -1,7 +1,7 @@
 <header>
 	<div class="header-title mob">
 		<div class="burger-menu d-flex justify-content-between" id="burger-menu">
-			<a href="/"><img class="logo-wic-mobile" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
+			<a href="/"><img class="logo-wic-mobile" src="{{asset('assets/images/logo.png')}}" alt="logo ComptAgency"></a>
 			<div id="burger-menu1" class="mob mt-2">
 				<span></span>
 			</div>
@@ -9,7 +9,7 @@
 	</div>
 
 	<nav class="navbar-wic position-relative" id="navbar">
-		<a href="/"><img class="logo-wic position-absolute" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
+		<a href="/"><img class="logo-wic position-absolute" src="{{asset('assets/images/logo.png')}}" alt="logo ComptAgency"></a>
 		<ul>
 			{% if is_granted('ROLE_USER') %}
 				<li class="bold">
@@ -35,32 +35,32 @@
 			<div class="button-section"></div>
 		</ul>
 	</nav>
-	<hr class="hr-navbar"></header>
+</header>
 
 {# menu burger #}
 <div id="menu1">
 	<ul>
-			{% if is_granted('ROLE_USER') %}
-				<li class="grey bold">
-					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
-				</li>
-				<li class="grey bold">
-					<a href="{{path('app_word_new')}}" class="slide-line-grey">Mon compte</a>
-				</li>
-				<li class="grey bold">
-					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
-				</li>
-			{% else %}
-				<li class="grey bold">
-					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
-				</li>
-				<li class="grey bold">
-					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
-				</li>
-				<li class="grey bold">
-					<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
-				</li>
-			{% endif %}
+		{% if is_granted('ROLE_USER') %}
+			<li class="grey bold">
+				<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+			</li>
+			<li class="grey bold">
+				<a href="{{path('app_word_new')}}" class="slide-line-grey">Mon compte</a>
+			</li>
+			<li class="grey bold">
+				<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+			</li>
+		{% else %}
+			<li class="grey bold">
+				<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+			</li>
+			<li class="grey bold">
+				<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
+			</li>
+			<li class="grey bold">
+				<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+			</li>
+		{% endif %}
 	</ul>
 </div>
 {# END menu burger #}
