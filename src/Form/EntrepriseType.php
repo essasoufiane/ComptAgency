@@ -15,7 +15,6 @@ class EntrepriseType extends AbstractType
             ->add('name')
             ->add('status')
             ->add('siren')
-            ->add('user')
         ;
     }
 
