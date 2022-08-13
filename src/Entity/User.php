@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,6 +39,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?int $phone = null;
+
+    #[ORM\OneToMany(mappedBy: 'userId', targetEntity: Entreprise::class)]
+    private Collection $entreprises;
+
+    public function __construct()
+    {
+        $this->entreprises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -159,6 +169,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(?int $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Entreprise>
+     */
+    public function getEntreprises(): Collection
+    {
+        return $this->entreprises;
+    }
+
+    public function addEntreprise(Entreprise $entreprise): self
+    {
+        if (!$this->entreprises->contains($entreprise)) {
+            $this->entreprises[] = $entreprise;
+            $entreprise->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntreprise(Entreprise $entreprise): self
+    {
+        if ($this->entreprises->removeElement($entreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($entreprise->getUserId() === $this) {
+                $entreprise->setUserId(null);
+            }
+        }
 
         return $this;
     }
