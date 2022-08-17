@@ -26,7 +26,7 @@
                 <td>{{ app.user.phone }}</td>
                 <td>
                     {# <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a> #}
-                    <a href="{{ path('app_user_edit', {'id': app.user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_edit', {'id': app.user.id}) }}" class="text-black"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {# {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a>
+    {# <a href="{{ path('app_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a> #}
 {% endblock %}

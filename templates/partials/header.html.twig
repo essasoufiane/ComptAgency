@@ -11,7 +11,7 @@
 	<nav class="navbar-wic position-relative" id="navbar">
 		<a href="/"><img class="logo-wic position-absolute" src="{{asset('assets/images/logo.png')}}" alt="logo ComptAgency"></a>
 		<ul>
-			{% if is_granted('ROLE_USER') %}
+			{% if is_granted('ROLE_ADMIN') %}
 				<li class="bold">
 					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
 				</li>
@@ -19,12 +19,19 @@
 					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
 				</li>
 				<li class="bold">
+					<a href="{{path('admin')}}" class="slide-line-grey">Dashboard</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+				</li>
+			{% elseif is_granted('ROLE_USER') %}
+				<li class="bold">
+					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
+				</li>
+				<li class="bold">
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
 			{% else %}
-				<li class="bold">
-					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
-				</li>
 				<li class="bold">
 					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
 				</li>
@@ -39,28 +46,36 @@
 
 {# menu burger #}
 <div id="menu1">
-	<ul>
-		{% if is_granted('ROLE_USER') %}
-			<li class="grey bold">
-				<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
-			</li>
-			<li class="grey bold">
-				<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
-			</li>
-			<li class="grey bold">
-				<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
-			</li>
-		{% else %}
-			<li class="grey bold">
-				<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
-			</li>
-			<li class="grey bold">
-				<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
-			</li>
-			<li class="grey bold">
-				<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
-			</li>
-		{% endif %}
-	</ul>
+		<ul>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li class="bold">
+					<a href="{{path('app_word_new')}}" class="slide-line-grey">Nouveau</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('admin')}}" class="slide-line-grey">Dashboard</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+				</li>
+			{% elseif is_granted('ROLE_USER') %}
+				<li class="bold">
+					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
+				</li>
+			{% else %}
+				<li class="bold">
+					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+				</li>
+			{% endif %}
+			<div class="button-section"></div>
+		</ul>
 </div>
 {# END menu burger #}
