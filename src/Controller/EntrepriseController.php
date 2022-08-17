@@ -30,7 +30,7 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entreprise->setUser($this->getUser());
+            $entreprise->setUser($this->getUser()); //envoie l'id du user
             $entrepriseRepository->add($entreprise, true);
             $manager->persist($entreprise);
             $manager->flush();
