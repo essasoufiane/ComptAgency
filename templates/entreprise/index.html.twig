@@ -25,6 +25,7 @@
                 <td>
                     <a class="text-black" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
                     <a class="text-black" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class="text-black" href="{{ path('app_employer', {'id': entreprise.id}) }}"><i class="fas fa-user"></i></a>
                 </td>
             </tr>
         {% else %}

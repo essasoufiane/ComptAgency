@@ -39,20 +39,20 @@ class EmployerRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Employer[] Returns an array of Employer objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Employer[] Returns an array of Employer objects
+     */
+    public function findByEntreprise($value): array
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.entreprise = :val')
+            ->setParameter('val', $value)
+            // ->orderBy('e.id', 'ASC')
+            // ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Employer
 //    {
