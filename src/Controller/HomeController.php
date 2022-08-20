@@ -23,16 +23,6 @@ class HomeController extends AbstractController
 
         ]);
     }
-// sert a afficher les employer d'une entreprise
-    #[Route('/{id}', name: 'app_employer', methods: ['GET'])]
-    public function showMyEmployer(EmployerRepository $employerRepository, Entreprise 
-    $entreprise): Response
-    {
-        $employer = $employerRepository->findByEntreprise($entreprise->getId());
-        return $this->render('employer/index.html.twig', [
-            'employers' => $employer,
-        ]);
-    }
 
 
     #[Route('/word1', name: 'app_word')]

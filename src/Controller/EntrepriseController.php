@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
+use App\Repository\EmployerRepository;
 use App\Repository\EntrepriseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,17 @@ class EntrepriseController extends AbstractController
     {
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entrepriseRepository->findAll(),
+        ]);
+    }
+
+    // sert a afficher les employer d'une entreprise
+    #[Route('show/{id}', name: 'app_employer', methods: ['GET'])]
+    public function showMyEmployer(EmployerRepository $employerRepository, Entreprise 
+    $entreprise): Response
+    {
+        $employer = $employerRepository->findByEntreprise($entreprise->getId());
+        return $this->render('employer/showEmployer.html.twig', [
+            'employers' => $employer,
         ]);
     }
 
