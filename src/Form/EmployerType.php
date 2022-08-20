@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Employer;
 use App\Entity\Entreprise;
-use App\Form\EntrepriseType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +19,10 @@ class EmployerType extends AbstractType
             ->add('age')
             ->add('entreprise', EntityType::class, [
                 'class'        => Entreprise::class,
-                'choice_label' => 'id',
+                'choice_label' => function ($entreprise) {
+                    return 'ID:' . $entreprise->getId().' '. $entreprise->getName();
+                },
+                // 'choices' => 
                 'multiple'     => false,
             ]);
     }
