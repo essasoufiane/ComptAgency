@@ -23,11 +23,11 @@ class EmployerType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options,): void
     {
-        // grab the user, do a quick sanity check that one exists
+        // saisir l'utilisateur, faire une vérification rapide de l'existence de l'utilisateur.
         $user = $this->security->getUser();
         if (!$user) {
             throw new \LogicException(
-                'The FriendMessageFormType cannot be used without an authenticated user!'
+                'Vous devez être authentifier!'
             );
         }
         $builder

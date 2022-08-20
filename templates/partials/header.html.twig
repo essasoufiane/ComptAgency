@@ -29,9 +29,6 @@
 					<a href="{{path('app_entreprise_index')}}" class="slide-line-grey">Entreprise</a>
 				</li>
 				<li class="bold">
-					<a href="{{path('app_employer_index')}}" class="slide-line-grey">Employer</a>
-				</li>
-				<li class="bold">
 					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
 				</li>
 				<li class="bold">
@@ -69,9 +66,6 @@
 			{% elseif is_granted('ROLE_USER') %}
 				<li class="bold">
 					<a href="{{path('app_entreprise_index')}}" class="slide-line-grey">Entreprise</a>
-				</li>
-				<li class="bold">
-					<a href="{{path('app_employer_index')}}" class="slide-line-grey">Employer</a>
 				</li>
 				<li class="bold">
 					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
