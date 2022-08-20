@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Employer;
+use App\Entity\Entreprise;
 use App\Form\EmployerType;
 use App\Repository\EmployerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,8 +42,10 @@ class EmployerController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_employer_show', methods: ['GET'])]
-    public function show(Employer $employer): Response
+    public function show(Employer $employer, EmployerRepository $employerRepository, Entreprise $entreprise): Response
     {
+        $entreprise = new Entreprise();
+        $employer = $employerRepository->findByEntreprise($entreprise->getId());
         return $this->render('employer/show.html.twig', [
             'employer' => $employer,
         ]);
