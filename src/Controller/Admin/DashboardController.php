@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Article;
 use App\Entity\Employer;
 use App\Entity\Entreprise;
 use App\Entity\User;
@@ -46,6 +47,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Entreprise', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Show entreprises', 'fas fa-eye', Entreprise::class)->setAction(Crud::PAGE_INDEX),
             MenuItem::linkToCrud('Create entreprise', 'fas fa-plus', Entreprise::class)->setAction(Crud::PAGE_NEW),
+        ]);
+
+        yield MenuItem::subMenu('Article', 'fas fa-user')->setSubItems([
+            MenuItem::linkToCrud('Show articles', 'fas fa-eye', Article::class)->setAction(Crud::PAGE_INDEX),
+            MenuItem::linkToCrud('Create article', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
         ]);
 
         yield MenuItem::subMenu('Employer', 'fas fa-user')->setSubItems([
