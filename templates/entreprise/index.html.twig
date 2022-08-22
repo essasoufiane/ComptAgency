@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprise{% endblock %}
+
+{% block body %}
+    <h1>Entreprise</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Statut</th>
+                <th>Siren</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entreprise in app.user.entreprises %}
+            <tr>
+                <td>{{ entreprise.id }}</td>
+                <td>{{ entreprise.name }}</td>
+                <td>{{ entreprise.status }}</td>
+                <td>{{ entreprise.siren }}</td>
+                <td>
+                    <a class="text-black" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
+                    <a class="text-black" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class="text-black" href="{{ path('app_employer', {'id': entreprise.id}) }}"><i class="fas fa-user"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Vous n'avez pas encore d'enptrise</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entreprise_new') }}">Créé une nouvelle entreprise</a>
+{% endblock %}
