@@ -75,11 +75,6 @@ class Messages
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->created_at = new \DateTime();//envoie la date au moment d'écrire le message
-    }
-
     public function isIsRead(): ?bool
     {
         return $this->is_read;
