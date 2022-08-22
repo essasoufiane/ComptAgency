@@ -1,7 +1,7 @@
 <header>
 	<div class="header-title mob">
 		<div class="burger-menu d-flex justify-content-between" id="burger-menu">
-			<a href="/"><img class="logo-wic-mobile" src="{{asset('assets/images/logo.png')}}" alt="logo ComptAgency"></a>
+			<a href="/"><img class="logo-wic-mobile" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
 			<div id="burger-menu1" class="mob mt-2">
 				<span></span>
 			</div>
@@ -9,7 +9,7 @@
 	</div>
 
 	<nav class="navbar-wic position-relative" id="navbar">
-		<a href="/"><img class="logo-wic position-absolute" src="{{asset('assets/images/logo.png')}}" alt="logo ComptAgency"></a>
+		<a href="/"><img class="logo-wic position-absolute" src="{{asset('build/images/logo.png')}}" alt="logo ComptAgency"></a>
 		<ul>
 			{% if is_granted('ROLE_ADMIN') %}
 				<li class="bold">
@@ -45,7 +45,7 @@
 			<div class="button-section"></div>
 		</ul>
 	</nav>
-</header>
+	<hr class="hr-navbar"></header>
 
 {# menu burger #}
 <div id="menu1">
