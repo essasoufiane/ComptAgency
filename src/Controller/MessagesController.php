@@ -14,10 +14,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/messages')]
 class MessagesController extends AbstractController
 {
-    #[Route('/', name: 'app_messages_index', methods: ['GET'])]
-    public function index(MessagesRepository $messagesRepository): Response
+    #[Route('/recevied', name: 'app_messages_recevied', methods: ['GET'])]
+    public function recevied(MessagesRepository $messagesRepository): Response
     {
-        return $this->render('messages/index.html.twig', [
+        return $this->render('messages/recevied.html.twig', [
+            'messages' => $messagesRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/sent', name: 'app_messages_sent', methods: ['GET'])]
+    public function sent(MessagesRepository $messagesRepository): Response
+    {
+        return $this->render('messages/sent.html.twig', [
             'messages' => $messagesRepository->findAll(),
         ]);
     }
@@ -35,7 +43,7 @@ class MessagesController extends AbstractController
             $message->setSender($this->getUser());//enregistre l'expediteur
             $messagesRepository->add($message, true);
 
-            return $this->redirectToRoute('app_messages_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_messages_sent', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('messages/new.html.twig', [
@@ -45,8 +53,10 @@ class MessagesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_messages_show', methods: ['GET'])]
-    public function show(Messages $message): Response
+    public function show(Messages $message, MessagesRepository $messagesRepository): Response
     {
+        $message->setIsRead(true); //message lu
+        $messagesRepository->add($message, true);
         return $this->render('messages/show.html.twig', [
             'message' => $message,
         ]);
@@ -77,6 +87,6 @@ class MessagesController extends AbstractController
             $messagesRepository->remove($message, true);
         }
 
-        return $this->redirectToRoute('app_messages_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_messages_recevied', [], Response::HTTP_SEE_OTHER);
     }
 }

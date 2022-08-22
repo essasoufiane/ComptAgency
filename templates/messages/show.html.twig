@@ -1,38 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Messages{% endblock %}
+{% block title %}Messages
+{% endblock %}
 
 {% block body %}
-    <h1>Messages</h1>
+	<h1>Messages</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ message.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ message.title }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ message.message }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Is_read</th>
-                <td>{{ message.isRead ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Title</th>
+				<td>{{ message.title }}</td>
+			</tr>
+			<tr>
+				<th>Message</th>
+				<td>{{ message.message }}</td>
+			</tr>
+			<tr>
+				<th>Created_at</th>
+				<td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_messages_index') }}">back to list</a>
+	<a href="{{ path('app_messages_recevied') }}">Retour à la boîte de réception</a>
 
-    <a href="{{ path('app_messages_edit', {'id': message.id}) }}">edit</a>
+	{# <a href="{{ path('app_messages_edit', {'id': message.id}) }}">edit</a> #}
 
-    {{ include('messages/_delete_form.html.twig') }}
+	{{ include('messages/_delete_form.html.twig') }}
 {% endblock %}

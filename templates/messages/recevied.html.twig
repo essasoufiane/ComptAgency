@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages index
+{% endblock %}
+
+{% block body %}
+
+	{# <table class="table">
+					        <thead>
+					            <tr>
+					                <th>Id</th>
+					                <th>Title</th>
+					                <th>Message</th>
+					                <th>Created_at</th>
+					                <th>Is_read</th>
+					                <th>actions</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					        {% for message in messages %}
+					            <tr>
+					                <td>{{ message.id }}</td>
+					                <td>{{ message.title }}</td>
+					                <td>{{ message.message }}</td>
+					                <td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					                <td>{{ message.isRead ? 'Yes' : 'No' }}</td>
+					                <td>
+					                    <a href="{{ path('app_messages_show', {'id': message.id}) }}">show</a>
+					                    <a href="{{ path('app_messages_edit', {'id': message.id}) }}">edit</a>
+					                </td>
+					            </tr>
+					        {% else %}
+					            <tr>
+					                <td colspan="6">no records found</td>
+					            </tr>
+					        {% endfor %}
+					        </tbody>
+					    </table> #}
+
+	<Section class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Messagerie</h1>
+				<h2>Boîte de réception</h2>
+				<p>Vous avez reçu {{ app.user.recevied|length }} messages</p>
+			</div>
+			<div class="col-3">De</div>
+			<div class="col-3">Sujet</div>
+			<div class="col-3">Date</div>
+			<div class="col-3">Actions</div>
+			{% for message in app.user.recevied %}
+				{# mets en gras les message non lu #}
+				{% if message.isRead == 0 %}
+					{% set lu = "fw-bold" %}
+				{% else %}
+					{% set lu = "" %}
+				{% endif %}
+
+				<div class="col-3 {{ lu }}">{{ message.sender.email }}</div>
+				<div class="col-3 {{ lu }}">{{ message.title }}</div>
+				<div class="col-3 {{ lu }}">{{ message.createdAt|date }}</div>
+				<div class="col-3 {{ lu }}">
+					<a href="{{ path('app_messages_show', {'id': message.id}) }}">show</a>
+				</div>
+			{% endfor %}
+		</div>
+	</Section>
+
+
+	<a href="{{ path('app_messages_new') }}">Create new</a>
+{% endblock %}
