@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Messages;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +17,7 @@ class MessagesType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('message')
+            ->add('message', CKEditorType::class)
             ->add('recipient', EntityType::class, [
                 'class'        => User::class,
                 'query_builder' => function(UserRepository $repository) {

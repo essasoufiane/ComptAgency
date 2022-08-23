@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             // ->add('created_date')
-            ->add('content')
+            ->add('content', CKEditorType::class)
             // ->add('admin')
         ;
     }
