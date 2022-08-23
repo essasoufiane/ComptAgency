@@ -14,9 +14,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            // ->add('created_date')
             ->add('content', CKEditorType::class)
-            // ->add('admin')
         ;
     }
 
