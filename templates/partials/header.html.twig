@@ -41,9 +41,8 @@
 						<h2 id="offcanvasRightLabel">Messagerie</h2>
 						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 					</div>
-					{% for message in app.user.recevied %}
-						<p>Vous avez {{ app.user.recevied|length - message.isRead|length }} messages non lus</p>
-					{% endfor %}
+						<p>Vous avez {{ app.user.recevied|length }} messages reçu</p>
+						<p>Vous avez envoyé {{ app.user.sent|length }} messages</p>
 					<div class="offcanvas-body">
 						<ul class="nav flex-column">
 							<li class="nav-item">

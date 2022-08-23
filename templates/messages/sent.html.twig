@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Messages index
+{% block title %}Messages envoyés
 {% endblock %}
 
 {% block body %}
@@ -27,7 +27,7 @@
 				<div class="col-3 {{ lu }}">{{ message.title }}</div>
 				<div class="col-3 {{ lu }}">{{ message.createdAt|date }}</div>
 				<div class="col-3 {{ lu }}">
-					<a href="{{ path('app_messages_show', {'id': message.id}) }}">show</a>
+					<a href="{{ path('app_messages_showSent', {'id': message.id}) }}">show</a>
 				</div>
 			{% endfor %}
 		</div>

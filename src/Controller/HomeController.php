@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Entreprise;
 use Smalot\PdfParser\Parser;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
-use App\Repository\EmployerRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;

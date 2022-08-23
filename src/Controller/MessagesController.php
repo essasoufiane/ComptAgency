@@ -52,6 +52,14 @@ class MessagesController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}sent', name: 'app_messages_showSent', methods: ['GET'])]
+    public function showSent(Messages $message): Response
+    {
+        return $this->render('messages/showSent.html.twig', [
+            'message' => $message,
+        ]);
+    }
+
     #[Route('/{id}', name: 'app_messages_show', methods: ['GET'])]
     public function show(Messages $message, MessagesRepository $messagesRepository): Response
     {
