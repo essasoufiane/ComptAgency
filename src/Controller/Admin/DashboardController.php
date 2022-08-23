@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Employer;
 use App\Entity\Entreprise;
+use App\Entity\Messages;
 use App\Entity\User;
 use App\Entity\Word;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -39,11 +40,16 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::subMenu('Messages', 'fas fa-user')->setSubItems([
+            MenuItem::linkToCrud('Show messages', 'fas fa-eye', Messages::class)->setAction(Crud::PAGE_INDEX),
+            MenuItem::linkToCrud('Create message', 'fas fa-plus', Messages::class)->setAction(Crud::PAGE_NEW),
+        ]);
+
         yield MenuItem::subMenu('Utilisateur', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Show users', 'fas fa-eye', User::class)->setAction(Crud::PAGE_INDEX),
             MenuItem::linkToCrud('Create user', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW),
         ]);
-
+        
         yield MenuItem::subMenu('Entreprise', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Show entreprises', 'fas fa-eye', Entreprise::class)->setAction(Crud::PAGE_INDEX),
             MenuItem::linkToCrud('Create entreprise', 'fas fa-plus', Entreprise::class)->setAction(Crud::PAGE_NEW),
