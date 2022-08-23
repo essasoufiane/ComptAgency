@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use DateTime;
 use App\Entity\Messages;
 use App\Form\MessagesType;
+use App\Form\MessagesAdminType;
 use App\Repository\MessagesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +37,28 @@ class MessagesController extends AbstractController
         $message->setCreatedAt(new \DateTimeImmutable());//enregistre la date de création
         $message->setIsRead(false);
         $form = $this->createForm(MessagesType::class, $message);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message->setSender($this->getUser());//enregistre l'expediteur
+            $messagesRepository->add($message, true);
+
+            return $this->redirectToRoute('app_messages_sent', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('messages/new.html.twig', [
+            'message' => $message,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/newAdmin', name: 'app_messages_newAdmin', methods: ['GET', 'POST'])]
+    public function newAdmin(Request $request, MessagesRepository $messagesRepository): Response
+    {
+        $message = new Messages();
+        $message->setCreatedAt(new \DateTimeImmutable());//enregistre la date de création
+        $message->setIsRead(false);
+        $form = $this->createForm(MessagesAdminType::class, $message);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
