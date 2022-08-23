@@ -19,8 +19,14 @@ class MessagesAdminType extends AbstractType
             ->add('message')
             ->add('recipient', EntityType::class, [
                 'class'        => User::class,
+                'query_builder' => function(UserRepository $repository) {
+                    return $repository->createQueryBuilder('e')
+                    ->where('e.roles LIKE :roles')
+                    ->setParameter('roles', '%"'.'ROLE_USER'.'"%')
+                    ;
+                },
                 'choice_label' => function ($user) {
-                    return 'ID : ' . $user->getId().' '. $user->getLastname();
+                    return 'ID : ' . $user->getId().' Nom : '. $user->getLastname() . ' Prénom : ' . $user->getFirstname();
                 },
                 'multiple'     => false,
             ])

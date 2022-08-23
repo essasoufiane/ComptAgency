@@ -21,8 +21,8 @@ class MessagesType extends AbstractType
                 'class'        => User::class,
                 'query_builder' => function(UserRepository $repository) {
                     return $repository->createQueryBuilder('e')
-                    ->andWhere('e.id = :val')
-                    ->setParameter('val', '10')
+                    ->where('e.roles LIKE :roles')
+                    ->setParameter('roles', '%"'.'ROLE_ADMIN'.'"%')
                     ;
                 },
                 'choice_label' => function ($user) {
