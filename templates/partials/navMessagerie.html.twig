@@ -1,0 +1,21 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<h2 id="offcanvasRightLabel">Messagerie</h2>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<p>Vous avez {{ app.user.recevied|length }} messages reçu</p>
+	<p>Vous avez envoyé {{ app.user.sent|length }} messages</p>
+	<div class="offcanvas-body">
+		<ul class="nav flex-column">
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_messages_new') }}">Nouveau message</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_messages_recevied') }}">Boîte de réception</a>
+			</li>
+			<li class="nav-item">
+				<a href="{{path('app_messages_sent')}}" class="nav-link">Messages envoyés</a>
+			</li>
+		</ul>
+	</div>
+</div>

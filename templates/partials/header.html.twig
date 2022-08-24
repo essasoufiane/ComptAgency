@@ -25,27 +25,8 @@
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
 				<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-					<div class="offcanvas-header">
-						<h2 id="offcanvasRightLabel">Messagerie</h2>
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-						<p>Vous avez {{ app.user.recevied|length }} messages reçu</p>
-						<p>Vous avez envoyé {{ app.user.sent|length }} messages</p>
-					<div class="offcanvas-body">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_messages_newAdmin') }}">Nouveau message</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_messages_recevied') }}">Boîte de réception</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{path('app_messages_sent')}}" class="nav-link">Messages envoyés</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				{# nav messagerie #}
+				{% include "partials/navMessagerieAdmin.html.twig" %}
 			{% elseif is_granted('ROLE_USER') %}
 				<li class="bold">
 					<a href="{{path('app_entreprise_index')}}" class="slide-line-grey">Entreprise</a>
@@ -57,33 +38,17 @@
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
 				<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
-				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-					<div class="offcanvas-header">
-						<h2 id="offcanvasRightLabel">Messagerie</h2>
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-						<p>Vous avez {{ app.user.recevied|length }} messages reçu</p>
-						<p>Vous avez envoyé {{ app.user.sent|length }} messages</p>
-					<div class="offcanvas-body">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_messages_new') }}">Nouveau message</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_messages_recevied') }}">Boîte de réception</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{path('app_messages_sent')}}" class="nav-link">Messages envoyés</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				{# nav messagerie #}
+				{% include "partials/navMessagerie.html.twig" %}
 			{% else %}
 				<li class="bold">
 					<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
 				</li>
 				<li class="bold">
 					<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_contact_new')}}" class="slide-line-grey">Contact</a>
 				</li>
 			{% endif %}
 			<div class="button-section"></div>
@@ -132,6 +97,9 @@
 			</li>
 			<li class="bold">
 				<a href="{{path('app_register')}}" class="slide-line-grey">Inscription</a>
+			</li>
+			<li class="bold">
+				<a href="{{path('app_contact_new')}}" class="slide-line-grey">Contact</a>
 			</li>
 		{% endif %}
 		<div class="button-section"></div>
