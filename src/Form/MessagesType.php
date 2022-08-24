@@ -9,16 +9,49 @@ use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MessagesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('message', CKEditorType::class)
+            ->add('title', TextType::class, [
+                'label'=>'Sujet du message',
+                'attr' => [
+                    "placeholder" => "L'objet de vôtre message",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir l'objet de vôtre message",
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 4096,
+                    ]),
+                ],
+            ])
+            ->add('message', CKEditorType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de saisir votre message',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre messagee doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 20000,
+                    ]),
+                ],
+            ])
             ->add('recipient', EntityType::class, [
+                'label'=>'Déstinataire',
                 'class'        => User::class,
                 'query_builder' => function(UserRepository $repository) {
                     return $repository->createQueryBuilder('e')

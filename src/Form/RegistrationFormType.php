@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,16 +24,55 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('lastname', TextType::class, [
-                "label" => "Nom",
-                "attr" => ["placeholder" => "Kim"]
+                'label'=>'Vôtre nom',
+                'attr' => [
+                    "placeholder" => "Dupont",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir vôtre nom",
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 40,
+                    ]),
+                ],
             ])
             ->add('firstname', TextType::class, [
-                "label" => "Prénom",
-                "attr" => ["placeholder" => "Jong"]
+                'label'=>'Vôtre prénom',
+                'attr' => [
+                    "placeholder" => "Dupont",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir vôtre prénom",
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 40,
+                    ]),
+                ],
             ])
             ->add('phone', IntegerType::class, [
-                "label" => "Tel",
-                "attr"  => ["placeholder" => "07 09 09 90 88"]
+                'label'=>'Téléphone',
+                'attr' => [
+                    'placeholder' => "0744332244",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new Length([
+                        'min' => 9,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 25,
+                    ]),
+                ],
             ])
             ->add('email', EmailType::class, [
                 "label" => "Email",

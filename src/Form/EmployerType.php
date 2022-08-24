@@ -9,7 +9,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class EmployerType extends AbstractType
 {
@@ -31,9 +34,60 @@ class EmployerType extends AbstractType
             );
         }
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('age')
+            ->add('lastname', TextType::class, [
+                "label"=>"Le nom de l'employer",
+                'attr' => [
+                    "placeholder" => "Dupond",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir nom de l'employer de l'entreprise",
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 100,
+                    ]),
+                ],
+            ])
+            ->add('firstname', TextType::class, [
+                "label"=>"Le prénom de l'employer",
+                'attr' => [
+                    "placeholder" => "Dupond",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir prénom de l'employer de l'entreprise",
+                    ]),
+                    new Length([
+                        'min' => 3,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 100,
+                    ]),
+                ],
+            ])
+            ->add('age', IntegerType::class, [
+                "label"=>"L'âge de l'employer",
+                'attr' => [
+                    'placeholder' => "30",
+                    'class' => "form-control"
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        "message" => "Merci de saisir l'âge de l'employer de l'entreprise",
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Ce champ doit contenir au moins {{ limit }} caractères',
+                       
+                        'max' => 2,
+                    ]),
+                ],
+            ])
             ->add('entreprise', EntityType::class, [
                 'class'        => Entreprise::class,
                 'query_builder' => function(EntrepriseRepository $repository) use ($user) {
