@@ -41,4 +41,4 @@ setInterval(function() {
     enleverActiveImage();
     img__slider[etape].classList.add('active');
 
-}, 1500) //3 sec entre chaque slide
+}, 1500) //1,5 sec entre chaque slide
