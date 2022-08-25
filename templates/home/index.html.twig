@@ -4,23 +4,58 @@
 {% endblock %}
 
 {% block body %}
-
-	<section class="slider">
-		<img class="img__slider active" src="{{asset('assets/images/calculateur.jpg')}}" alt="calculateur">
-		<img class="img__slider" src="{{asset('assets/images/digitalMarketing.jpg')}}" alt="digitalMarketing">
-		<img class="img__slider" src="{{asset('assets/images/ecommerce.jpg')}}" alt="ecommerce">
-		<img class="img__slider" src="{{asset('assets/images/graphique.jpg')}}" alt="graphique">
-		<div class="right">
-			{# <i class="fas fa-angle-double-right"></i> #}
-		</div>
-		<div class="left">
-			{# <i class="fas fa-angle-double-left"></i> #}
-		</div>
-        <article class="cta d-flex flex-column justify-content-center align-items-center">
-        <h1>ComptAgency</h1>
-        <p>Faites confiance aux expèrt</p>
-        </article>
-
-	</section>
+	<main>
+	{# slider #}
+		<section class="slider">
+			<img class="img__slider active" src="{{asset('assets/images/calculateur.jpg')}}" alt="calculateur">
+			<img class="img__slider" src="{{asset('assets/images/digitalMarketing.jpg')}}" alt="digitalMarketing">
+			<img class="img__slider" src="{{asset('assets/images/ecommerce.jpg')}}" alt="ecommerce">
+			<img class="img__slider" src="{{asset('assets/images/graphique.jpg')}}" alt="graphique">
+			<div
+				class="right">{# <i class="fas fa-angle-double-right"></i> #}
+			</div>
+			<div
+				class="left">{# <i class="fas fa-angle-double-left"></i> #}
+			</div>
+			<article class="cta d-flex flex-column justify-content-center align-items-center">
+				<h1 class="text-white">ComptAgency</h1>
+				<p class="text-white">Faites confiance aux expèrt</p>
+			</article>
+		</section>
+		{# Présentation #}
+		<section class="pt-4 d-flex flex-wrap justify-content-around align-items-center">
+			<article class="max-w-650 px-3">
+				<h1 class="text-center">Nos prestations</h1>
+				<p class="text-center">Accompagner les entreprises dans leur développement</p>
+				<h2 class="">Nos métiers</h2>
+				<ul class="">
+					<li>
+						<strong>Accompagnateur du dirigeant</strong>
+						dans la phase de création afin que celui-ci soit débarrasser de toute contrainte juridique, fiscale ou financière pour se concentrer sur son métier</li>
+					<li>
+						<strong>Auditeur interne</strong>
+						dans le cadre de réorganisation ou de la mise en place de process</li>
+					<li>
+						<strong>Expertise comptable</strong>
+						(bien évidemment) pour les missions de saisie, révision et supervision des comptes annuels</li>
+					<li>
+						<strong>Boosteur</strong>
+						dans le cadre de la transition numérique et le suivi administratif</li>
+				</ul>
+			</article>
+			<article class="max-w-450 px-3">
+				<div class="shadow boiteCTA px-3">
+					<div>
+						<h1 class="text-center pt-2 text-white">Déjà client ?</h1>
+						<p class="text-white">Chez ComptAgency, déposez vos documents en quelques clics afin de rendre le traitement de vôtre dossier plus facile et plus rapide :</p>
+					</div>
+					<div class="d-flex justify-content-around py-1">
+						<a href="#" class="btn btn-secondary mr-1">Créé votre entreprise</a>
+						<a href="#" class="btn btn-secondary ml-1">Ajouter un employer</a>
+					</div>
+				</div>
+			</article>
+		</section>
+	</main>
 
 {% endblock %}

@@ -44,3 +44,29 @@
     color: $grey-light;
 }
 // END slider
+
+/* Section présentation */
+section strong {
+    color: $primary;
+}
+
+section li, p {
+    color: $text;
+}
+
+section h1, h2 {
+    color: $secondary;
+}
+
+.max-w-650 {
+    max-width: 650px;
+}
+
+.max-w-450 {
+    max-width: 450px;
+}
+
+.boiteCTA {
+    background-color: $primary;
+    border-radius: 10px;
+}
