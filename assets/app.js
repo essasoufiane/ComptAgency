@@ -12,3 +12,4 @@ import './styles/app.scss';
 import './bootstrap';
 import './js/navbar';
 import './js/index';
+import './js/number';
