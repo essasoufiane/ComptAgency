@@ -149,24 +149,74 @@
 		<section class="d-flex justify-content-center">
 			<div class="Slide-container">
 				<div class="Slide-content">
-					<div class="Card-wrapper">
-						<div class="Card">
-							<div class="Image-content">
-								<span class="Overlay"></span>
-								<div class="Card-image">
-									<img src="{{asset('assets/images/graphique.jpg')}}" alt="photo de profil client" class="Card-img">
+					<div id="carouselWithInterval" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active" data-bs-interval="2000">
+								<div class="Card-wrapper">
+									<div class="Card m-auto">
+										<div class="Image-content">
+											<span class="Overlay"></span>
+											<div class="Card-image">
+												<img src="{{asset('assets/images/graphique.jpg')}}" alt="photo de profil client" class="Card-img">
+											</div>
+										</div>
+										<div class="Card-content">
+											<h2 class"name">Name Titlre</h2>
+											<p class="Description text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolorum beatae odit, rem architecto nisi, mollitia non quia facere dolore cumque, sed a eos eaque. Consequuntur ut a excepturi maxime.</p>
+											{# <button class="Button">Voir plus</button> #}
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="Card-content">
-							<h2 class"Name">Name Titlre</h2>
-							<p class="Description text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolorum beatae odit, rem architecto nisi, mollitia non quia facere dolore cumque, sed a eos eaque. Consequuntur ut a excepturi maxime.</p>
-							<button class="Button">Voir plus</button>
+							<div class="carousel-item" data-bs-interval="2000">
+								<div class="Card-wrapper">
+									<div class="Card m-auto">
+										<div class="Image-content">
+											<span class="Overlay"></span>
+											<div class="Card-image">
+												<img src="{{asset('assets/images/graphique.jpg')}}" alt="photo de profil client" class="Card-img">
+											</div>
+										</div>
+										<div class="Card-content">
+											<h2 class"name">Name Titlre</h2>
+											<p class="Description text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolorum beatae odit, rem architecto nisi, mollitia non quia facere dolore cumque, sed a eos eaque. Consequuntur ut a excepturi maxime.</p>
+											{# <button class="Button">Voir plus</button> #}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item" data-bs-interval="2000">
+								<div class="Card-wrapper">
+									<div class="Card m-auto">
+										<div class="Image-content">
+											<span class="Overlay"></span>
+											<div class="Card-image">
+												<img src="{{asset('assets/images/graphique.jpg')}}" alt="photo de profil client" class="Card-img">
+											</div>
+										</div>
+										<div class="Card-content">
+											<h2 class"name">Name Title</h2>
+											<p class="Description text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolorum beatae odit, rem architecto nisi, mollitia non quia facere dolore cumque, sed a eos eaque. Consequuntur ut a excepturi maxime.</p>
+											{# <button class="Button">Voir plus</button> #}
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
+						<a class="carousel-control-prev" href="#carouselWithInterval" role="button" data-bs-slide="next">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselWithInterval" role="button" data-bs-slide="prev">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</a>
 					</div>
 				</div>
 			</div>
 		</section>
+
+
 	</main>
 
 {% endblock %}

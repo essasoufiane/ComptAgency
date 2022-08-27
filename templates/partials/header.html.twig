@@ -35,6 +35,9 @@
 					<a href="{{path('app_user_index')}}" class="slide-line-grey">Mon compte</a>
 				</li>
 				<li class="bold">
+					<a href="{{path('app_avis_index')}}" class="slide-line-grey">Vos avis</a>
+				</li>
+				<li class="bold">
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
 				<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
@@ -49,6 +52,9 @@
 				</li>
 				<li class="bold">
 					<a href="{{path('app_contact_new')}}" class="slide-line-grey">Contact</a>
+				</li>
+				<li class="bold">
+					<a href="{{path('app_avis_index')}}" class="slide-line-grey">Vos avis</a>
 				</li>
 			{% endif %}
 			<div class="button-section"></div>
@@ -91,6 +97,9 @@
 			<li class="bold">
 				<a href="{{path('app_messages_sent')}}" class="slide-line-grey">Messages envoyés</a>
 			</li>
+			<li class="bold">
+				<a href="{{path('app_avis_index')}}" class="slide-line-grey">Vos avis</a>
+			</li>
 		{% else %}
 			<li class="bold">
 				<a href="{{path('app_login')}}" class="slide-line-grey">Connexion</a>
@@ -100,6 +109,9 @@
 			</li>
 			<li class="bold">
 				<a href="{{path('app_contact_new')}}" class="slide-line-grey">Contact</a>
+			</li>
+			<li class="bold">
+				<a href="{{path('app_avis_index')}}" class="slide-line-grey">Vos avis</a>
 			</li>
 		{% endif %}
 		<div class="button-section"></div>
