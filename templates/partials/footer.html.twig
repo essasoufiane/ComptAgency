@@ -1,0 +1,91 @@
+<footer class="text-center text-lg-start bg-light text-muted pt-3">
+	<section class="d-flex flex-wrap justify-content-center px-2">
+		<span class="pr-4 h2">Retrouvez-nous sur les reseaux :</span>
+		<div>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none pr-4">
+				<i class="fab fa-facebook"></i>
+			</a>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none pr-4">
+				<i class="fab fa-instagram"></i>
+			</a>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none pr-4">
+				<i class="fab fa-snapchat-square"></i>
+			</a>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none pr-4">
+				<i class="fab fa-tiktok"></i>
+			</a>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none pr-4">
+				<i class="fab fa-whatsapp"></i>
+			</a>
+			<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+				<i class="fab fa-twitter"></i>
+			</a>
+		</div>
+	</section>
+
+	<section class="row mt-3">
+		<article class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+			<h6 class="text-uppercase fw-bold mb-4">
+				<i class="fas fa-gem"></i> ComptAgency
+			</h6>
+			<p>
+				Cette entreprise n'existe pas
+				<br>
+				Ce site est à but pédagogique.
+			</p>
+		</article>
+		<article class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+			<h6 class="text-uppercase fw-bold mb-4">
+				Menu
+			</h6>
+		{% if is_granted('ROLE_USER') %}
+			<p>
+				<a href="{{path('app_entreprise_index')}}" class="text-reset">Entreprise</a>
+			</p>
+			<p>
+				<a href="{{path('app_user_index')}}" class="text-reset">Mon compte</a>
+			</p>
+			<p>
+				<a href="{{path('app_avis_index')}}" class="text-reset">Vos avis</a>
+			</p>
+			<p>
+				<a href="{{path('app_logout')}}" class="text-reset">Deconnexion</a>
+			</p>
+			{% else %}
+			<p>
+				<a href="{{path('app_login')}}" class="text-reset">Connexion</a>
+			</p>
+			<p>
+				<a href="{{path('app_register')}}" class="text-reset">Inscription</a>
+			</p>
+			<p>
+				<a href="{{path('app_contact_new')}}" class="text-reset">Contact</a>
+			</p>
+			<p>
+				<a href="{{path('app_avis_index')}}" class="text-reset">Vos avis</a>
+			</p>
+			{% endif %}
+		</article>
+
+		<article class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+				Contact
+			</h6>
+			<p>
+				<i class="fas fa-home"></i>Bordeaux, France</p>
+			<p>
+				<i class="fas fa-envelope"></i>
+				<a href="mailto:soufiane.pro@yahoo.com">soufiane.pro@yahoo.com</a>
+			</p>
+			<p>
+				<i class="fas fa-phone"></i>
+				<a href="tel:+33766224284">0766224284</a>
+			</p>
+		</article>
+	</section>
+
+	<div class="text-center p-4 copyright">
+		© 2022 Copyright: ComptAgency
+	</div>
+</footer>

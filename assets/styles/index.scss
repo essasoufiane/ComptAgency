@@ -58,18 +58,6 @@ section h1, h2 {
     color: $secondary;
 }
 
-.max-w-650 {
-    max-width: 650px;
-}
-
-.max-w-450 {
-    max-width: 450px;
-}
-
-.max-w-350 {
-    max-width: 350px;
-}
-
 .boiteCTA {
     background-color: $primary;
     border-radius: 10px;
@@ -115,6 +103,7 @@ section h1, h2 {
 
 .Card {
     max-width: 350px;
+    min-height: 370px;
     border-radius: 5%;
     background-color: $grey-light;
 }
@@ -127,10 +116,6 @@ section h1, h2 {
     padding: 40px 0;
     border-radius: 10px;
 }
-
-// .Slide-content {
-//     margin: 0 40px;
-// }
 
 .Image-content, .Card-content {
     display: flex;

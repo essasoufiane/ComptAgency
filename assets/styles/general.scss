@@ -3,3 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    min-height: calc(100vh - 390px);
+    position: relative;
+}
+
+.max-w-650 {
+    max-width: 650px;
+}
+
+.max-w-450 {
+    max-width: 450px;
+}
+
+.max-w-350 {
+    max-width: 350px;
+}
+
+.w-350 {
+    width: 350px;
+}

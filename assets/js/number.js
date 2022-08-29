@@ -1,18 +1,18 @@
-let valueDisplays = document.querySelectorAll(".num");
+"use strict";
+
+const valueDisplays = document.querySelectorAll(".num") // On récupère et sauvegarde les nodes avec la classe ".chiffre" dans une variable, ici appelé "num"
+const sectionNumber = document.querySelector(".sectionNumber"); // Sauvegarde la node pour juste en dessous récupéré la position et la sauvegardé
+
+let positionDeLaBalise = sectionNumber.getBoundingClientRect() // "getBoundingClientRect" retourne un Objet remplis d'infos à propos d'une node du DOM (d'un élément**)
 
 let interval = 1500;
 
-const sectionNumber = document.querySelector('.sectionNumber');
+let alreadyPLayed = false;
 
-const $i = 0;
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
+    // {{ window.scrollY + window.innerHeight }} ici on additione le taux en défilement vertical éffectué ( donné par scrollY ) + la taille en pixel du viewport ( innerHeight ) (car on veut obtenir la valeur en pixel du bas de l'écran)
 
-    const { scrollTop, clientHeight } = document.documentElement;
-
-    const topElementToTopViewport = sectionNumber.getBoundingClientRect().top;
-
-    if (scrollTop > (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.80) {
-
+    if((window.scrollY +  window.innerHeight) > (positionDeLaBalise.y.toFixed()) && !alreadyPLayed) { // ici on déclanche l'animation du chiffre en rentrant uniquement dans le bloc "if" si la position enregistré lors du scroll est supérieure à la position de l'élément qu'on veux animé
         valueDisplays.forEach(valueDisplays => {
             let startValue = 0;
             let endValue = parseInt(valueDisplays.getAttribute("data-val"));
@@ -22,11 +22,9 @@ window.addEventListener('scroll', () => {
                 valueDisplays.textContent = startValue;
                 if (startValue == endValue) {
                     clearInterval(counter);
+                    alreadyPLayed = true;
                 }
             }, duration);
         });
-
-    }
+    } 
 })
-
-
