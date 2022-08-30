@@ -1,14 +1,16 @@
 footer h6 {
-    color: $primary;
-    font-size: 1.3rem;
-}
-
-.copyright {
-    background-color: #b6b6b62d;
+    color: $primary ;
+    font-size: 1.5rem;
 }
 
 footer {
-    position: absolute;
-    bottom: -390px;
-    width: 100%;
+    background-color: $whiteBGfooter;
+}
+
+.sectionCopy {
+    background-color: #bbc7ff9a;
+}
+
+.copy {
+    margin: 0;
 }
