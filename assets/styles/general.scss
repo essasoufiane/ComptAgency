@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.colorPrimary {
+    color: $primary;
+}
+
 .max-w-650 {
     max-width: 650px;
 }
@@ -46,4 +50,9 @@
 
 .labelForm {
     font-size: 1.3rem;
+}
+
+#imgProfil {
+    max-width: 100%;
+    height: auto;
 }

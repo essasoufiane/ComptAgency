@@ -1,43 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Mon profil
+{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+<section class="container">
+    <h1 class="titleContact py-3">Mon profil</h1>
+    <article class="p-3 shadow d-flex justify-content-between flex-wrap">
+        <div class="m-auto">
+            <p class="h3"><span class="colorPrimary font-15"> Id :</span>
+                {{ app.user.id }}</p>
+            <p class="h3"><span class="colorPrimary font-15"> Email :</span>
+                {{ app.user.email }}</p>
+            <p class="h3"><span class="colorPrimary font-15"> Nom :</span>
+                {{ app.user.lastname }}</p>
+            <p class="h3"><span class="colorPrimary font-15"> Prénom :</span>
+                {{ app.user.firstname }}</p>
+            <p class="h3"><span class="colorPrimary font-15">Tél :</span> 
+                {{ app.user.phone }}</p>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Phone</th>
-                <th>actions</th>
-                <th>Photo</th>
-            </tr>
-        </thead>
-        <tbody>
-        {# {% for user in users %} #}
-            <tr>
-                <td>{{ app.user.id }}</td>
-                <td>{{ app.user.email }}</td>
-                <td>{{ app.user.lastname }}</td>
-                <td>{{ app.user.firstname }}</td>
-                <td>{{ app.user.phone }}</td>
-                <td><img src="{{asset('user/images/profil/'~app.user.image)}}" alt="photo de profil"></td>
-                <td>
-                    {# <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a> #}
-                    <a href="{{ path('app_user_edit', {'id': app.user.id}) }}" class="text-black"><i class="fas fa-edit"></i></a>
-                </td>
-            </tr>
-        {# {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %} #}
-        </tbody>
-    </table>
+        <img id="imgProfil" class="rounded-circle m-auto" width="300px" src="{{asset('user/images/profil/'~app.user.image)}}" alt="photo de profil">
 
-    {# <a href="{{ path('app_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a> #}
+    </article>
+    <a href="{{ path('app_user_edit', {'id': app.user.id}) }}" class="btn btn-warning text-black my-3">Éditer</a>
+
+</section>
+
+
+	{# <a href="{{ path('app_user_delete', {'id': app.user.id}) }}">Supprimer mon compte</a> #}
 {% endblock %}
