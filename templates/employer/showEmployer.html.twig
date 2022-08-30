@@ -3,37 +3,39 @@
 {% block title %}Employer index{% endblock %}
 
 {% block body %}
-    <h1>Employer index</h1>
+<div class="container">
+    <h1 class="titleContact py-3">Employer index</h1>
 
     <table class="table">
-        <thead>
+        <thead class="bg-table">
             <tr>
-                <th>Id</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Age</th>
-                <th>actions</th>
+                <th class="desk">Id</th>
+                <th>Nom</th>
+                <th class="desk">Prénom</th>
+                <th class="text-center desk">Âge</th>
+                <th class="text-center">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for employer in employers %}
             <tr>
-                <td>{{ employer.id }}</td>
+                <td class="desk">{{ employer.id }}</td>
                 <td>{{ employer.lastname }}</td>
-                <td>{{ employer.firstname }}</td>
-                <td>{{ employer.age }}</td>
-                <td>
-                    <a href="{{ path('app_employer_show', {'id': employer.id}) }}">show</a>
-                    <a href="{{ path('app_employer_edit', {'id': employer.id}) }}">edit</a>
+                <td class="desk">{{ employer.firstname }}</td>
+                <td class="text-center desk">{{ employer.age }}</td>
+                <td class="text-center">
+                    <a href="{{ path('app_employer_show', {'id': employer.id}) }}"><i class="fa-solid fa-eye text-black mr-2"></i></a>
+                    <a href="{{ path('app_employer_edit', {'id': employer.id}) }}"><i class="fas fa-edit text-black ml-2"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Vous n'avez pas encore d'employés</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_employer_new') }}">Create new</a>
+    <a class="btn btn-primary mt-3" href="{{ path('app_employer_new') }}">Ajouter un employé</a>
+</div>
 {% endblock %}

@@ -23,3 +23,27 @@
 .size-2 {
     font-size: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+    .desk {
+        display: none;
+    }
+}
+
+.titleAvis {
+    font-size: 3rem;
+    color: $primary;
+}
+
+.titleContact {
+    font-size: 3rem;
+    color: $primary;
+}
+
+.bg-table {
+    background-color: $grey-light;
+}
+
+.labelForm {
+    font-size: 1.3rem;
+}

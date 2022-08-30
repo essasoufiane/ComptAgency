@@ -3,28 +3,29 @@
 {% block title %}Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Entreprise</h1>
+<div class="container">
+    <h1 class="titleContact py-3">Entreprise</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th class="desk">Id</th>
                 <th>Nom</th>
-                <th>Statut</th>
-                <th>Siren</th>
-                <th>Actions</th>
+                <th class="desk">Statut</th>
+                <th class="desk">Siren</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entreprise in app.user.entreprises %}
             <tr>
-                <td>{{ entreprise.id }}</td>
+                <td class="desk">{{ entreprise.id }}</td>
                 <td>{{ entreprise.name }}</td>
-                <td>{{ entreprise.status }}</td>
-                <td>{{ entreprise.siren }}</td>
-                <td>
+                <td class="desk">{{ entreprise.status }}</td>
+                <td class="desk">{{ entreprise.siren }}</td>
+                <td class="text-center">
                     <a class="text-black" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}"><i class="fa-solid fa-eye"></i></a>
-                    <a class="text-black" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class="text-black px-4" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}"><i class="fas fa-edit"></i></a>
                     <a class="text-black" href="{{ path('app_employer', {'id': entreprise.id}) }}"><i class="fas fa-user"></i></a>
                 </td>
             </tr>
@@ -36,5 +37,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_entreprise_new') }}">Créé une nouvelle entreprise</a>
+    <a class="btn btn-primary my-3" href="{{ path('app_entreprise_new') }}">Créé une nouvelle entreprise</a>
+</div>
 {% endblock %}

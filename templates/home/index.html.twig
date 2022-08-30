@@ -46,8 +46,13 @@
 			<article class="max-w-450 px-3">
 				<div class="shadow boiteCTA px-3">
 					<div>
+				{% if is_granted('ROLE_USER') %}
+						<h1 class="text-center pt-2 text-white">Bonjour {{ app.user.firstname }}</h1>
+						<p class="text-white">Déposez vos documents en quelques clics afin de rendre le traitement de vôtre dossier plus facile et plus rapide :</p>
+				{% else %}
 						<h1 class="text-center pt-2 text-white">Déjà client ?</h1>
 						<p class="text-white">Chez ComptAgency, déposez vos documents en quelques clics afin de rendre le traitement de vôtre dossier plus facile et plus rapide :</p>
+				{% endif %}
 					</div>
 					<div class="d-flex justify-content-around pb-3">
 						<a href="{{path('app_entreprise_new')}}" class="btn btn-secondary mr-1">Créé votre entreprise</a>

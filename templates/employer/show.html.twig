@@ -3,32 +3,33 @@
 {% block title %}Employer{% endblock %}
 
 {% block body %}
-    <h1>Employer</h1>
+<div class="container">
+    <h1 class="titleContact py-3">Employer</h1>
 
-    <table class="table">
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ employer.id }}</td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Nom</th>
                 <td>{{ employer.lastname }}</td>
             </tr>
             <tr>
-                <th>Firstname</th>
+                <th>Prénom</th>
                 <td>{{ employer.firstname }}</td>
             </tr>
             <tr>
-                <th>Age</th>
+                <th>Âge</th>
                 <td>{{ employer.age }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_employer_index') }}">back to list</a>
-
-    <a href="{{ path('app_employer_edit', {'id': employer.id}) }}">edit</a>
+<div class="container d-flex">
+    <a class="btn btn-warning mx-4" href="{{ path('app_employer_edit', {'id': employer.id}) }}">Éditer</a>
 
     {{ include('employer/_delete_form.html.twig') }}
+</div>
+</div>
 {% endblock %}

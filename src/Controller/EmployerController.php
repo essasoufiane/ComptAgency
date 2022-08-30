@@ -32,7 +32,7 @@ class EmployerController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $employerRepository->add($employer, true);
 
-            return $this->redirectToRoute('app_employer_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('employer/new.html.twig', [
@@ -42,10 +42,8 @@ class EmployerController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_employer_show', methods: ['GET'])]
-    public function show(Employer $employer, EmployerRepository $employerRepository, Entreprise $entreprise): Response
+    public function show(Employer $employer): Response
     {
-        $entreprise = new Entreprise();
-        $employer = $employerRepository->findByEntreprise($entreprise->getId());
         return $this->render('employer/show.html.twig', [
             'employer' => $employer,
         ]);

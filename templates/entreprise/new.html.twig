@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Nouvelle Entreprise</h1>
+<div class="container">
+    <h1 class="titleContact py-3">Nouvelle Entreprise</h1>
 
     {{ include('entreprise/_form.html.twig') }}
 
-    <a href="{{ path('app_entreprise_index') }}">Revenir à la liste</a>
+    <a class="btn btn-primary mt-3" href="{{ path('app_entreprise_index') }}">Revenir à la liste</a>
+</div>
 {% endblock %}
