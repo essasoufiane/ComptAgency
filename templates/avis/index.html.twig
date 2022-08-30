@@ -1,35 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Avis index{% endblock %}
+{% block title %}Avis index
+{% endblock %}
 
 {% block body %}
-    <h1>Avis index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for avi in avis %}
-            <tr>
-                <td>{{ avi.id }}</td>
-                <td>{{ avi.content }}</td>
-                <td>
-                    <a href="{{ path('app_avis_show', {'id': avi.id}) }}">show</a>
-                    <a href="{{ path('app_avis_edit', {'id': avi.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<h1 class="titleAvis text-center py-3">Avis index</h1>
+    <div class="container d-flex justify-content-around flex-wrap">
+	{% for avi in avis %}
+    <div class="position-relative m-3">
+		<div class="Card m-auto">
+			<div class="Image-content">
+				<span class="Overlay"></span>
+				<div class="Card-image">
+					{% if avi.user.image is empty %}
 
-    <a href="{{ path('app_avis_new') }}">Create new</a>
+						<img src="{{asset('assets/images/ecommerce.jpg')}}" alt="photo de profil client" class="Card-img">
+					{% else %}
+						<img src="{{asset('user/images/profil/'~avi.user.image)}}" alt="photo de profil" class="Card-img">
+					{% endif %}
+				</div>
+			</div>
+			<div class="Card-content">
+				<h2 class"name">{{ avi.user.firstname }}</h2>
+				<p class="Description text-center">{{ avi.content }}</p>
+			</div>
+		</div>
+    </div>
+	{% endfor %}
+    </div>
+
+	<a class="btn btn-primary ml-5 my-5" href="{{ path('app_avis_new') }}">Donnez votre avis</a>
+    {% include "partials/footer.html.twig" %}
 {% endblock %}

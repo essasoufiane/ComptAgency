@@ -1,11 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Contact{% endblock %}
+{% block title %}New Contact
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Contact</h1>
+	<div class="container my-5">
+		<h1 class="titleContact">Formulaire de contact</h1>
+		<p>Laissez votre message, notre equipe se fera un plaisir de traiter votre demande dans les plus bref délais.</p>
 
-    {{ include('contact/_form.html.twig') }}
+		{{ include('contact/_form.html.twig') }}
 
-    <a href="{{ path('app_contact_index') }}">back to list</a>
+	</div>
+	<section class="border shadow container rounded-3 mb-3 my-5 d-flex flex-wrap">
+		<div class="p-2 side-title m-auto">
+			<p>
+				<i class="fas fa-home me-3"></i>
+				Bordeaux, 33000</p>
+			<p>
+				<i class="fas fa-envelope me-3"></i>
+				<a href="mailto:izydrive@gmail.com">developpeur@soufiane-essaouari.fr</a>
+			</p>
+			<p>
+				<i class="fas fa-phone me-3"></i>
+				<a href="tel:+01.02.03.04.07">01.02.03.04.07</a>
+			</p>
+
+		</div>
+		<div class=" side-title m-auto">
+			<h4 class="text-center side-title">Retrouvez moi sur les reseaux :</h4>
+			<div class="d-flex justify-content-around">
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-facebook"></i>
+				</a>
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-snapchat-square"></i>
+				</a>
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-tiktok"></i>
+				</a>
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-whatsapp"></i>
+				</a>
+				<a href="https://github.com/essasoufiane" class="h2 text-decoration-none">
+					<i class="fab fa-twitter"></i>
+				</a>
+			</div>
+		</div>
+
+	</section>
+
 {% endblock %}
