@@ -78,6 +78,18 @@
 			<li class="bold">
 				<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 			</li>
+			<li class="bold">
+				<a class="nav-link" href="{{ path('app_messages_newAdmin') }}">Nouveau message</a>
+			</li>
+			<li class="bold">
+				<a class="nav-link" href="{{ path('app_messages_recevied') }}">Boîte de réception</a>
+			</li>
+			<li class="bold">
+				<a href="{{path('app_messages_sent')}}" class="nav-link">Messages envoyés</a>
+			</li>
+			<li class="bold">
+				<a href="{{path('app_contact_index')}}" class="nav-link">Boîte de réception visiteur</a>
+			</li>
 		{% elseif is_granted('ROLE_USER') %}
 			<li class="bold">
 				<a href="{{path('app_entreprise_index')}}" class="slide-line-grey">Entreprise</a>
@@ -113,6 +125,7 @@
 			<li class="bold">
 				<a href="{{path('app_avis_index')}}" class="slide-line-grey">Vos avis</a>
 			</li>
+
 		{% endif %}
 		<div class="button-section"></div>
 	</ul>
