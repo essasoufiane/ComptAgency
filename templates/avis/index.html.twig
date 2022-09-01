@@ -5,31 +5,34 @@
 
 {% block body %}
 
-	<h1 class="titleAvis text-center py-3">Avis index</h1>
-    <div class="container d-flex justify-content-around flex-wrap">
-	{% for avi in avis %}
-    <div class="position-relative m-3">
-		<div class="Card m-auto">
-			<div class="Image-content">
-				<span class="Overlay"></span>
-				<div class="Card-image">
-					{% if avi.user.image is empty %}
+	<div class="container">
+	<h1 class="titleAvis text-center py-3">Vos avis</h1>
+	<p class="text-center size-2">Parce que vos avis compte beaucoup chez ComptAgency</p>
+	<div class="container d-flex justify-content-around flex-wrap">
+		{% for avi in avis %}
+			<div class="position-relative m-3">
+				<div class="Card m-auto">
+					<div class="Image-content">
+						<span class="Overlay"></span>
+						<div class="Card-image">
+							{% if avi.user.image is empty %}
 
-						<img src="{{asset('assets/images/ecommerce.jpg')}}" alt="photo de profil client" class="Card-img">
-					{% else %}
-						<img src="{{asset('user/images/profil/'~avi.user.image)}}" alt="photo de profil" class="Card-img">
-					{% endif %}
+								<img src="{{asset('assets/images/ecommerce.jpg')}}" alt="photo de profil client" class="Card-img">
+							{% else %}
+								<img src="{{asset('user/images/profil/'~avi.user.image)}}" alt="photo de profil" class="Card-img">
+							{% endif %}
+						</div>
+					</div>
+					<div class="Card-content">
+						<h2 class"name">{{ avi.user.firstname }}</h2>
+						<p class="Description text-center">{{ avi.content }}</p>
+					</div>
 				</div>
 			</div>
-			<div class="Card-content">
-				<h2 class"name">{{ avi.user.firstname }}</h2>
-				<p class="Description text-center">{{ avi.content }}</p>
-			</div>
-		</div>
-    </div>
-	{% endfor %}
-    </div>
-
+		{% endfor %}
+	</div>
 	<a class="btn btn-primary ml-5 my-5" href="{{ path('app_avis_new') }}">Donnez votre avis</a>
-    {% include "partials/footer.html.twig" %}
+	</div>
+
+	{% include "partials/footer.html.twig" %}
 {% endblock %}

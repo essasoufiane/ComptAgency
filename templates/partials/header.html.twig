@@ -24,7 +24,7 @@
 				<li class="bold">
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
-				<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
+				<button class="btn btn-primary my-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
 				{# nav messagerie #}
 				{% include "partials/navMessagerieAdmin.html.twig" %}
 			{% elseif is_granted('ROLE_USER') %}
@@ -40,7 +40,7 @@
 				<li class="bold">
 					<a href="{{path('app_logout')}}" class="slide-line-grey">Deconnexion</a>
 				</li>
-				<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
+				<button class="btn btn-primary my-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Messagerie</button>
 				{# nav messagerie #}
 				{% include "partials/navMessagerie.html.twig" %}
 			{% else %}

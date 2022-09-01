@@ -16,13 +16,18 @@ class AvisType extends AbstractType
     {
         $builder
             ->add('content', TextType::class, [
+                "label"=>"Votre avis",
+                'attr' => [
+                    "placeholder" => "ComptAgency sont vraiment très sympa",
+                    'class' => "form-control"
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de saisir votre message',
                     ]),
                     new Length([
                         'min' => 10,
-                        'minMessage' => 'Votre messagee doit contenir au moins {{ limit }} caractères',
+                        'minMessage' => 'Votre avis doit contenir au moins {{ limit }} caractères',
                        
                         'max' => 100,
                     ]),

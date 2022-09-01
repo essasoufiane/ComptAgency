@@ -3,9 +3,11 @@
 {% block title %}New Avis{% endblock %}
 
 {% block body %}
-    <h1>Create new Avis</h1>
+<div class="container">
+    <h1 class="titleContact py-3">Donnez votre avis</h1>
 
     {{ include('avis/_form.html.twig') }}
 
-    <a href="{{ path('app_avis_index') }}">back to list</a>
+    <a class="btn btn-primary mt-3" href="{{ path('app_avis_index') }}">Retour à la liste</a>
+</div>
 {% endblock %}
