@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Avis;
+use App\Entity\Contact;
 use App\Entity\Employer;
 use App\Entity\Entreprise;
 use App\Entity\Messages;
@@ -68,6 +70,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Word', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Show Word', 'fas fa-eye', Word::class)->setAction(Crud::PAGE_INDEX),
             MenuItem::linkToCrud('Create Word', 'fas fa-plus', Word::class)->setAction(Crud::PAGE_NEW),
+        ]);
+        yield MenuItem::subMenu('Avis', 'fas fa-user')->setSubItems([
+            MenuItem::linkToCrud('Show Word', 'fas fa-eye', Avis::class)->setAction(Crud::PAGE_INDEX),
+            MenuItem::linkToCrud('Create Word', 'fas fa-plus', Avis::class)->setAction(Crud::PAGE_NEW),
+        ]);
+        yield MenuItem::subMenu('message visiteur', 'fas fa-user')->setSubItems([
+            MenuItem::linkToCrud('Show Word', 'fas fa-eye', Contact::class)->setAction(Crud::PAGE_INDEX),
+            MenuItem::linkToCrud('Create Word', 'fas fa-plus', Contact::class)->setAction(Crud::PAGE_NEW),
         ]);
         yield MenuItem::linkToRoute('Quitter le dashboard', 'fas fa-door-open', 'app_home');
         yield MenuItem::linkToLogout('Déconnexion', 'fas fa-sign-out-alt');
