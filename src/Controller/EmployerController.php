@@ -31,8 +31,9 @@ class EmployerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $employerRepository->add($employer, true);
-
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            
+            $this->addFlash('success', 'L\'employer '. $employer->getLastname() .' a bien été ajouter !');
+            return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('employer/new.html.twig', [
@@ -57,8 +58,9 @@ class EmployerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $employerRepository->add($employer, true);
-
-            return $this->redirectToRoute('app_employer_index', [], Response::HTTP_SEE_OTHER);
+            
+            $this->addFlash('success', 'L\'employer '. $employer->getLastname() .' a bien été mise à jour !');
+            return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('employer/edit.html.twig', [
@@ -73,7 +75,8 @@ class EmployerController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$employer->getId(), $request->request->get('_token'))) {
             $employerRepository->remove($employer, true);
         }
-
-        return $this->redirectToRoute('app_employer_index', [], Response::HTTP_SEE_OTHER);
+        
+        $this->addFlash('success', 'L\'employer '. $employer->getLastname() .' a bien été supprimer !');
+        return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
     }
 }

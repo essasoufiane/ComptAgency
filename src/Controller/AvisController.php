@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Avis;
 use App\Form\AvisType;
 use App\Repository\AvisRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +24,7 @@ class AvisController extends AbstractController
     }
 
     #[Route('/new', name: 'app_avis_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AvisRepository $avisRepository, EntityManagerInterface $manager): Response
+    public function new(Request $request, AvisRepository $avisRepository, EntityManagerInterface $manager, UserRepository $user): Response
     {
         $avi = new Avis();
         $form = $this->createForm(AvisType::class, $avi);
@@ -34,7 +35,8 @@ class AvisController extends AbstractController
             $avisRepository->add($avi, true);
             $manager->persist($avi);
             $manager->flush();
-
+            
+            $this->addFlash('success', 'Brâvo '. $user->getFirstname() .' message a bien été supprimer !');
             return $this->redirectToRoute('app_avis_index', [], Response::HTTP_SEE_OTHER);
         }
 

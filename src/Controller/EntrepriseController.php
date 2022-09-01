@@ -46,7 +46,8 @@ class EntrepriseController extends AbstractController
             $entrepriseRepository->add($entreprise, true);
             $manager->persist($entreprise);
             $manager->flush();
-
+            
+            $this->addFlash('success', 'L\'entreprise '. $entreprise->getName() .' a bien été enregistrer !');
             return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -72,23 +73,25 @@ class EntrepriseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entrepriseRepository->add($entreprise, true);
-
+            
+            $this->addFlash('success', 'L\'entreprise '. $entreprise->getName() .' a bien été mise à jour !');
             return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->renderForm('entreprise/edit.html.twig', [
             'entreprise' => $entreprise,
             'form' => $form,
         ]);
     }
-
+    
     #[Route('/{id}', name: 'app_entreprise_delete', methods: ['POST'])]
     public function delete(Request $request, Entreprise $entreprise, EntrepriseRepository $entrepriseRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$entreprise->getId(), $request->request->get('_token'))) {
             $entrepriseRepository->remove($entreprise, true);
         }
-
+        
+        $this->addFlash('success', 'L\'entreprise '. $entreprise->getName() .' a bien été supprimer !');
         return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -42,7 +42,8 @@ class MessagesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $message->setSender($this->getUser());//enregistre l'expediteur
             $messagesRepository->add($message, true);
-
+            
+            $this->addFlash('success', 'Vôtre message a bien été envoyer !');
             return $this->redirectToRoute('app_messages_sent', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,6 +66,7 @@ class MessagesController extends AbstractController
             $message->setSender($this->getUser());//enregistre l'expediteur
             $messagesRepository->add($message, true);
 
+            $this->addFlash('success', 'Vôtre message a bien été envoyer !');
             return $this->redirectToRoute('app_messages_sent', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -115,6 +117,7 @@ class MessagesController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
             $messagesRepository->remove($message, true);
+            $this->addFlash('success', 'Vôtre message a bien été supprimer !');
         }
 
         return $this->redirectToRoute('app_messages_recevied', [], Response::HTTP_SEE_OTHER);
