@@ -56,3 +56,13 @@
     max-width: 100%;
     height: auto;
 }
+
+.message {
+    border: thick double $primary;
+    min-height: 50vh;
+}
+
+.message img {
+    max-width: 100%;
+    height: auto;
+}

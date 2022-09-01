@@ -4,28 +4,21 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Messages</h1>
-
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Title</th>
-				<td>{{ message.title }}</td>
-			</tr>
-			<tr>
-				<th>Message</th>
-				<td>{{ message.message }}</td>
-			</tr>
-			<tr>
-				<th>Created_at</th>
-				<td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<a href="{{ path('app_messages_recevied') }}">Retour à la boîte de réception</a>
-
-	{# <a href="{{ path('app_messages_edit', {'id': message.id}) }}">edit</a> #}
-
+<div class="container">
+	<h1 class="titleContact py-3">Messages</h1>
+	<hr>
+	<div class="d-flex justify-content-around">
+	<p><span class="fw-bold"> Sujet :</span> {{ message.title }}</p>
+	<p><span class="fw-bold"> Date de création : </span>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+	</div>
+	<div class="message p-2">
+	{{ message.message|raw }}
+	</div>
+<div class="d-flex pt-3">
+	<a class="btn btn-primary mr-3" href="{{ path('app_messages_recevied') }}">Retour à la boîte de réception</a>
 	{{ include('messages/_delete_form.html.twig') }}
+</div>
+</div>
+
+
 {% endblock %}

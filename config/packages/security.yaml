@@ -36,7 +36,7 @@ security:
         - { path: ^/word, roles: ROLE_ADMIN }
         - { path: ^/entreprise, roles: ROLE_USER }
         - { path: ^/employer, roles: ROLE_USER }
-        - { path: ^/messages, roles: ROLE_USER }
+        - { path: ^/messages, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/avis/new, roles: ROLE_USER }
 
 when@test:
