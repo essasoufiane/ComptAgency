@@ -82,7 +82,8 @@ class UserController extends AbstractController
                 $user->setImage($newFilename);
             }
             $userRepository->add($user, true);
-
+            
+            $this->addFlash('success', 'Bravo '. $user->getFirstname() .', votre profil a bien été mise à jour !');
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
